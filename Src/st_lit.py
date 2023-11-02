@@ -5,12 +5,12 @@ import numpy as np
 import requests
 
 page_img = '''
-<style>
-[data-testid="stAppViewContainer"] {
-background-image: url("https://qpet.vn/wp-content/uploads/2023/04/anh-cho-cuoi.jpg");
-background-size: cover;
-}
-</style>
+    <style>
+    [data-testid="stAppViewContainer"] {
+    background-image: url("https://qpet.vn/wp-content/uploads/2023/04/anh-cho-cuoi.jpg");
+    background-size: cover;
+    }
+    </style>
 '''
 st.markdown(page_img, unsafe_allow_html=True)
 
@@ -63,8 +63,10 @@ if crime_gangster:
     genre.append("Crime & Gangster Films")
 st.header("Your choose:")
 st.write(genre)
+
+
 #####################################
-movies_dict = pd.read_pickle("indices.pkl")
+movies_dict = pd.read_pickle("../Arts/indices.pkl")
 # movies_dict = pickle.load(open('indices.pkl','rb'))
 indices = pd.DataFrame(movies_dict)#=indices
 st.write(indices)
@@ -72,9 +74,12 @@ selected_movie_name = st.selectbox(
 "Type or select a movie from the dropdown",
  indices['title'].values
 )
+
+
+
 ####################################
 # indices = smovies[['id','title','poster_path']]
-cosine_sim = pd.read_pickle("cosine_sim.pkl")
+cosine_sim = pd.read_pickle("../../cosine_sim.pkl")
 
 def fetch_poster(movie_id):
     f = "https://api.themoviedb.org/3/movie/"
